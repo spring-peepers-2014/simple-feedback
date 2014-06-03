@@ -13,7 +13,7 @@ class FeedbacksController < ApplicationController
       redirect_to feedback_path(@feedback)
     else
       flash[:alert] = @feedback.errors.full_messages
-      redirect_to :back
+      redirect_to feedbacks_path
     end
   end
 

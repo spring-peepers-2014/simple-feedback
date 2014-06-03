@@ -18,6 +18,6 @@ feature 'Basic navigation' do
     fill_in 'Body', with: ''
     click_button 'Create Feedback'
 
-    expect(page).to have_content 'contain some kind feedback'
+    expect(page).not_to have_content 'contain some kind feedback'
   end
 end
