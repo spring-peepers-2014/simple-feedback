@@ -1,5 +1,12 @@
-<h1>tell me how much you ruv me</h1>
+<h1>Give me a spot feedback</h1>
 
+<% if !Array(flash[:alert]).empty? %>
+  <ul>
+  <% Array(flash[:alert]).each do |err| %>
+    <li><%= err %></li>
+  <% end %>
+  </ul>
+<% end %>
 
 <%= form_for @feedback do |f| %>
   <%= f.label :author %><br>

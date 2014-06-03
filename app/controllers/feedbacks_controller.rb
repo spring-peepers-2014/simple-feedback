@@ -11,8 +11,8 @@ class FeedbacksController < ApplicationController
     if @feedback.save
       flash[:success] = "Your feedback has been logged"
       redirect_to feedback_path(@feedback)
-
     else
+      flash[:alert] = @feedback.errors.full_messages
       redirect_to :back
     end
   end

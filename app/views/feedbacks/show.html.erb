@@ -4,7 +4,8 @@
 <% end %>
 </ul>
 
-<pre>
-   <%= @feedback.inspect %>
-</pre>
+<h1><%= @feedback.author.empty? ? "Anonymous" : @feedback.author %> says...</h1>
+<p><%= @feedback.body %></p>
+<p>And rates that lecture as...<%= @feedback.rating %></p>
 
+<%= link_to 'Home', :feedback %>
