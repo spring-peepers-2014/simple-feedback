@@ -1,0 +1,15 @@
+<h1>tell me how much you ruv me</h1>
+
+
+<%= form_for @feedback do |f| %>
+  <%= f.label :author %><br>
+  <%= f.text_field :author %><p style="display:inline"><em>(optional)</em></p><br>
+
+  <%= f.label :body %><br>
+  <%= f.text_area :body %>
+
+  <%= f.label :rating %><br>
+  <%= f.select :rating, *[1..5] %><span><em>5 is the best!</em></span><br>
+
+  <%= f.submit %>
+<% end %>
