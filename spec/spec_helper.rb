@@ -8,7 +8,12 @@ require 'rspec/autorun'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
+I18n.enforce_available_locales = true
+
 RSpec.configure do |config|
+  # Excerpt From: Aaron Sumner. Everyday Rails Testing with RSpec.
+  config.include FactoryGirl::Syntax::Methods
+
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
