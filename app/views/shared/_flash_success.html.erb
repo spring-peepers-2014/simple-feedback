@@ -1,6 +1,6 @@
 <ul>
-  <% if flash[:success] %>
-    <li><%= flash[:success] %></li>
+  <% if (flash[:success] || flash[:alert]) %>
+    <li><%= (flash[:success] || flash[:alert]) %></li>
   <% end %>
 </ul>
 
