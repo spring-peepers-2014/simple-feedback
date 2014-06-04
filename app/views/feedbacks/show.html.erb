@@ -1,11 +1,6 @@
-<ul>
-<% if flash[:success] %>
-  <li><%= flash[:success] %></li>
-<% end %>
-</ul>
-
 <h1><%= @feedback.author.empty? ? "Anonymous" : @feedback.author %> says...</h1>
 <p><%= @feedback.body %></p>
 <p>And rates that lecture as...<%= @feedback.rating %></p>
 
+<%= render 'shared/flash_success' %>
 <%= link_to 'Home', :feedback %>
