@@ -1,23 +1,26 @@
 $(document).ready(function(){
-  reader = new inputReader(this);
-  converter = new markdownConverter(reader.readtext());
+  var reader = new inputReader('#feedback_body');
+  var converter = new markdownConverter();
+
 
   $('#feedback_body').keyup(function() {
+    console.log( converter.textToConvert = reader.readText() )
 
-    var convertedText = markdown.parse( readText(this) );
-    renderPreview('#markdown-preview', convertedText)
+    // console.log('pressed')
+    // var convertedText = markdown.parse( readText(this) );
+    // renderPreview('#markdown-preview', convertedText)
 
   });
 });
 
-function readText(formId){
-  var rawText = $(formId).val();
-  return rawText;
-};
+// function readText(formId){
+//   var rawText = $(formId).val();
+//   return rawText;
+// };
 
-function renderPreview(id, text){
-  $(id).html('<h3>Preview</h3>' + text);
-}
+// function renderPreview(id, text){
+//   $(id).html('<h3>Preview</h3>' + text);
+// }
 
 
 // TRYING TO BE OOJS?!?!???
