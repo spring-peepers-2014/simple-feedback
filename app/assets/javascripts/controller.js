@@ -10,7 +10,8 @@ var text_to_convert;
 
 $(form_body).keyup(function(e) {
   var text = getRawText();
-  markdownConverter(text);
+  $(".preview").text("");
+  $(".preview").append(markdownConverter(text));
 });
 
 var getRawText = function() {
@@ -20,17 +21,31 @@ var getRawText = function() {
 var markdownConverter = function(text) {
   console.log("text: " + text);
 
-  checkForBold(text);
+  return checkForBold(text);
 }
 
 var checkForBold = function(text) {
-  for (var i = 0; i < text.length; i++) {
-    if (text[i] === "*") {
-      console.log("HALLELUJAH");
-    }
+  var converted;
+  var edited_text = text;
 
+  if (text.match(/(\*\*|__)(.*?)\1/)) {
+    var match_array = text.match(/(\*\*|__)(.*?)\1/);
+    var matched_text = match_array[0];
+    var matched_word = match_array[2];
+    var replaced_string = '<strong>' + matched_word + '</strong>';
+    converted = edited_text.replace(/(\*\*|__)(.*?)\1/, replaced_string);
+    console.log(converted);
   }
+  if (converted) {
+    console.log("RETURNTING CONVERTED: " + converted);
+    return converted;
+  }
+
 }
+
+
+
+
 
 // var getRawText = function() {
 //   var input = $('')
@@ -46,5 +61,13 @@ var checkForBold = function(text) {
 //                     -convertTomdown()
 
 // updatePreview = function
+
+
+  // for (var i = 0; i < text.length; i++) {
+  //   if (text[i] === "*") {
+  //     console.log("HALLELUJAH");
+  //   }
+
+  // }
 
 });
