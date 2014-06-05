@@ -4,6 +4,6 @@ var PreviewView = function( element ){
 
 PreviewView.prototype = {
     draw: function( newContent ){
-        $( this.element ).append( newContent )
+        $( this.element ).html( newContent )
     }
 };

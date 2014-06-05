@@ -2,6 +2,6 @@ var TextProcessor = function(){};
 
 TextProcessor.prototype = {
     processText: function( text ){
-        console.log( text );
+        return text.toUpperCase();
     }
 };
