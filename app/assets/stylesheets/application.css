@@ -11,3 +11,15 @@
  *= require_self
  *= require_tree .
  */
+
+.double_textbox {
+	width: 1000px;
+
+}
+
+.double_textbox .livebox {
+	display: inline;
+	position: relative;
+	margin-left: 50px;
+
+}
