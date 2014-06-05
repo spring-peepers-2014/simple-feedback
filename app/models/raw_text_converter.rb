@@ -5,6 +5,7 @@ class RawTextConverter
 	end
 
 	def enlarge(text)
-		
+
 	end
+
 end
