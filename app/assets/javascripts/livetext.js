@@ -1,7 +1,6 @@
 $(document).ready(function(){
   $('#feedback_body').keypress(function(e){
-      var textValue = String.fromCharCode(e.charCode);
-      $('#updatedMarkdown').append(textValue);
+      charCodeConver(e);
   })
 })
 
@@ -14,4 +13,7 @@ $(document).ready(function(){
 //   , bold: '*'
 // }
 
-// var charCodeConver = function
+var charCodeConver = function(e){
+  var textValue = String.fromCharCode(e.charCode);
+  $('#updatedMarkdown').append(textValue);
+}
