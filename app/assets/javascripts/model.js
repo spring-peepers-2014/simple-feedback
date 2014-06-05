@@ -1,8 +1,8 @@
-function convertText(text) {
+function textConverter(text) {
   this.text = text;
 };
 
-convertText.prototype.up = function() {
+textConverter.prototype.convert = function() {
   var pending = this.text.toUpperCase();
   console.log(pending);
 }

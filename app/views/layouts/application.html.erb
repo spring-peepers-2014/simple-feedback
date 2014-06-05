@@ -3,10 +3,14 @@
 <head>
   <title>SimpleFeedback</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <%= javascript_include_tag "initialize" %>
+  <%= javascript_include_tag "controller" %>
+  <%= javascript_include_tag "model" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
 
 <%= yield %>
 

@@ -1,8 +1,8 @@
 $(document).ready(function(){
-  $('form textarea').keyup(function(e){
+  var controller = new Controller()
+  $('form textarea').keyup(function(){
     var rawText = $(this).val();
-    var controller = new Controller(rawText)
-
+    controller.sawKeyUp(rawText)
   });
 
 

@@ -1,4 +1,10 @@
-function Controller(data){
-  // convertText(data).up();
-  console.log(data)
+function Controller(){
+
 }
+
+Controller.prototype.sawKeyUp = function(rawText) {
+  // rawText.toUpperCase();
+  var converter = new textConverter(rawText);
+  converter.convert();
+}
+
