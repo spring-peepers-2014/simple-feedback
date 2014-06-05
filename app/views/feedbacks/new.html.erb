@@ -8,6 +8,10 @@
   </ul>
 <% end %>
 
+<div id="preview" style="border: solid 1px red; position: absolute; top: 50%; right: 5px; width: 40%">
+  <p></p>
+</div>
+
 <%= form_for @feedback do |f| %>
   <%= f.label :author %><br>
   <%= f.text_field :author %><p style="display:inline"><em>(optional)</em></p><br>
