@@ -3,7 +3,7 @@ function textConverter(text) {
 };
 
 textConverter.prototype.convert = function() {
-  var pending = this.text.toUpperCase();
-  console.log(pending);
+  var modifiedText = this.text.toUpperCase();
+  return modifiedText
 }
 
