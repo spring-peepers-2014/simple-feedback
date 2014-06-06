@@ -1,57 +1,37 @@
 $(document).ready(function(){
-  var reader = new inputReader('#feedback_body');
-  var converter = new markdownConverter();
-
-
   $('#feedback_body').keyup(function() {
-    console.log( converter.textToConvert = reader.readText() )
-
-    // console.log('pressed')
-    // var convertedText = markdown.parse( readText(this) );
-    // renderPreview('#markdown-preview', convertedText)
-
+    vController.draw(converter.convertRawText(reader.readText()))
   });
 });
 
-// function readText(formId){
-//   var rawText = $(formId).val();
-//   return rawText;
-// };
-
-// function renderPreview(id, text){
-//   $(id).html('<h3>Preview</h3>' + text);
-// }
-
-
-// TRYING TO BE OOJS?!?!???
-// ========================================
-
+var reader = new inputReader('#feedback_body');
+var converter = new markdownConverter();
+var vController = new viewController('#markdown-preview');
 
 function inputReader(htmlElement) {
   this.targetedElement = htmlElement;
 };
-
 inputReader.prototype.readText = function() {
   var rawText = $(this.targetedElement).val();
   return rawText;
 };
 
-
 function markdownConverter() {
-  this.textToConvert = ""
 };
 
-markdownConverter.prototype.convertRawText = function() {
-  return markdown.parse(this.textToConvert);
+markdownConverter.prototype.convertRawText = function(textToConvert) {
+  return markdown.parse(textToConvert);
 };
 
-// var view = {
-//   renderPreview: function(id, text){
-//     $(id).html('<h3>Preview</h3>' + text);
-//   }
-// }
+function viewController(htmlElementToDrawOn) {
+  this.htmlElementToDrawOn = htmlElementToDrawOn
+};
 
+viewController.prototype.draw = function(textToRender) {
+  $('#markdown-preview').html(textToRender)
+}
 
+// Imported Markdown Converter
 //#############################################################
 
 var markdown = {
@@ -104,38 +84,5 @@ var markdown = {
 
     return md;
   }
-}
-
-
-
-// ####################################################################
-
-function mdToHtml(str) {
-    var tempStr = str;
-    while(tempStr.indexOf("**") !== -1) {
-        var firstPos = tempStr.indexOf("**");
-        var nextPos = tempStr.indexOf("**",firstPos + 2);
-        if(nextPos !== -1) {
-            var innerTxt = tempStr.substring(firstPos + 2,nextPos);
-            var strongified = '<strong>' + innerTxt + '</strong>';
-            tempStr = tempStr.substring(0,firstPos) + strongified + tempStr.substring(nextPos + 2,tempStr.length);
-        //get rid of unclosed '**'
-        } else {
-            tempStr = tempStr.replace('**','');
-        }
-    }
-     while(tempStr.indexOf("*") !== -1) {
-        var firstPos = tempStr.indexOf("*");
-        var nextPos = tempStr.indexOf("*",firstPos + 1);
-        if(nextPos !== -1) {
-            var innerTxt = tempStr.substring(firstPos + 1,nextPos);
-            var italicized = '<i>' + innerTxt + '</i>';
-            tempStr = tempStr.substring(0,firstPos) + italicized + tempStr.substring(nextPos + 2,tempStr.length);
-        //get rid of unclosed '*'
-        } else {
-            tempStr = tempStr.replace('*','');
-        }
-    }
-    return tempStr;
 }
 
